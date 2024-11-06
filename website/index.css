@@ -1,0 +1,222 @@
+body,html{
+  margin: 0px;
+  height: 100%;
+  overflow: hidden;
+}
+#game{
+  height: 100%;
+  position: relative;
+  background: #777;
+  display: flex;
+}
+#gameCanvas{
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/background.jpg");
+  /*background: white;*/
+  background-size: 50px 50px;
+  background-repeat: repeat;
+  display: block;
+}
+#mainMenu{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /*backdrop-filter: blur(0.5rem);*/
+  background: rgba(100,100,100,0.5);
+}
+#menuContainer{
+  align-self: center;
+  flex: 1;
+  text-align: center;
+}
+#gameName{
+  font-size: 5rem;
+  margin-bottom: 4rem;
+}
+#playerName{
+  display: block;
+  margin: auto;
+  background: transparent;
+  border: 0;
+  border-bottom: 0.25rem solid black;
+  height: 2rem;
+  font-size: 2rem;
+  width: 50%;
+  min-width: 15rem;
+  max-width: 20rem;
+  margin-bottom: 1rem;
+}
+#mainMenu button{
+  border: 0;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  margin: 0.1rem;
+}
+#CenterMenu{
+  display: flex;
+}
+#CenterMenu > div{
+  display: flex;
+  flex: 1;
+  max-width: 20rem;
+  margin: auto;
+}
+#CenterMenu button{
+  flex: 1;
+  max-width: 10rem;
+}
+#code{
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+#upgrade-block .line {
+  height: 24px;
+  width: 248px;
+  margin-top: 2px;
+  position: relative;
+}
+#upgrade-block {
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  text-align: left;
+  bottom: 30px;
+  left: -264px;
+  z-index: 45;
+}
+#upgrade-block .line .bars-bg {
+  background-color: black;
+  border-radius: 8px;
+  /* width: 228px; */
+  height: 100%;
+  position: relative;
+}
+#upgrade-block .line .bars .full {
+  background-color: #ff8c26;
+}
+#upgrade-block .line .bars span {
+  display: inline-block;
+  width: 24px;
+  border-radius: 4px;
+  /* margin-right: 4px; */
+  height: 16px;
+  margin-top: 4px;
+  margin-left: 4px;
+  background-color: grey;
+}
+#upgrade-block .line .plus img {
+  margin-top: 3px;
+  height: 18px;
+}
+#upgrade-block .line .plus {
+  position: absolute;
+  right: 3px;
+  top: 0;
+  line-height: 0;
+  pointer-events: all;
+  cursor: pointer;
+}
+#upgrade-block .line .text {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px auto;
+  color: #fff;
+}
+#leaderboard-block {
+  display: none;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  text-align: left;
+  top: 16px;
+  right: 16px;
+  border-radius: 12px;
+  padding: 8px 8px;
+  z-index: 45;
+  background-color: black;
+  color: #fff;
+  font-size: 16px;
+}
+#leaderboard-block .title {
+  font-size: 18px;
+  margin: 8px;
+  text-align: center;
+}
+#leaderboard-block .lb-item .rank {
+  vertical-align: middle;
+  margin-right: 2px;
+}
+#leaderboard-block .lb-item .player-name {
+  white-space: nowrap;
+  width: 160px;
+  max-width: 160px;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+}
+#leaderboard-block .lb-item .points {
+  margin-left: 8px;
+  vertical-align: middle;
+  text-align: right;
+}
+#lb-player-line{
+  color: #ffff2e
+}
+#player-health-background{
+  height: 26px;
+  min-width: 300px;
+  max-width: 70%;
+  border-radius: 12px;
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 97%;
+  transform: translate(-50%, -50%);
+}
+#player-health{
+  position: relative;
+  border-radius: 12px;
+  top: 3px;
+  left: 3px;
+  z-index: 10000;
+  height: 20px;
+  background-color: red;
+  max-width: calc(100% - 6px);
+}
+#skinColorHolder {
+    padding: 0px;
+    padding-left: 4px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+        
+}
+.skinColorItem{
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 3px solid #525252;
+}
+.activeSkin{
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    border-radius: 8px !important;
+}
+.skinColorItem:hover{
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    border-radius: 8px !important;
+}

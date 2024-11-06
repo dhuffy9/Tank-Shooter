@@ -1,0 +1,24 @@
+{
+  "name": "tank-shooter",
+  "version": "1.0.0",
+  "description": "Online Tank Game.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dhuffy9/Tank-Shooter.git"
+  },
+  "author": "Dilan Huffman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhuffy9/Tank-Shooter/issues"
+  },
+  "homepage": "https://github.com/dhuffy9/Tank-Shooter#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "p2": "^0.7.1",
+    "socket.io": "^4.8.1"
+  }
+}

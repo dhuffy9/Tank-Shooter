@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Tank Shooer</title>
+      <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+      <link rel="stylesheet" href="/index.css">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   </head>
+   <body>
+      <div id="game">
+         <canvas id="gameCanvas">
+         </canvas>
+         <div id="starts-div">
+            <span id="starts"></span>
+         </div>
+         <div id="stats">
+            <span id="code"></span>
+         </div>
+         <div id="mainMenu">
+            <div id="menuContainer">
+               <!-- GAME NAME -->
+               <div id="gameName">TankShooter.me</div>
+               <!-- MENU CARDS -->
+               <div id="menu">
+                  <div>
+                     <div class="menuCard" id="startMenu">
+                        <input type="text" id="playerName" placeholder="Enter Name" maxlength="15">
+                        <button id="enterGame" class="menuButton"><span>Enter Game</span></button>
+                     </div>
+                     <div class="menuCard" id="CenterMenu">
+                        <div>
+                           <button id="privateGame">Create Private Game</button>
+                           <button id="joinPriveGame">Join With Code</button>
+                        </div>
+                     </div>
+                     <div class="menuCard" id="leftMenu">
+                           <div id="skinColorHolder" class="">
+                              <div class="skinColorItem activeSkin" style="background-color:#FF0000" onclick="selectSkinColor(0)"></div>
+                              <div class="skinColorItem" style="background-color:#0000FF" onclick="selectSkinColor(1)"></div>
+                              <div class="skinColorItem" style="background-color:#008000" onclick="selectSkinColor(2)"></div>
+                              <div class="skinColorItem" style="background-color:#800080" onclick="selectSkinColor(3)"></div>
+                              <div class="skinColorItem" style="background-color:#808000" onclick="selectSkinColor(4)"></div>
+                           </div>
+                        </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="upgrade-block" style="display: none; left: 19px;">
+            <div class="avail-pts">upgrade points: <span id="upgrade-points">0</span></div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-0"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Player speed <span class="shortcut">[1]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-0" onclick="upgrade(0);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-1"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Bullet speed <span class="shortcut">[2]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-1" onclick="upgrade(1);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-2"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Bullet range <span class="shortcut">[3]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-2" onclick="upgrade(2);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-3"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Reload speed<span class="shortcut">[4]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-3" onclick="upgrade(3);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-4"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Bullet damage <span class="shortcut">[5]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-4" onclick="upgrade(4);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-5"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Player health <span class="shortcut">[6]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-5" onclick="upgrade(5);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+            <div class="line">
+               <div class="bars-bg">
+                  <div class="bars" id="skill-bar-6"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="text">Player heal <span class="shortcut">[7]</span></div>
+               </div>
+               <div class="plus" id="skill-plus-6" onclick="upgrade(6);" style="display: block;"><img src="/img/add.png"></div>
+            </div>
+         </div>
+         <div id="leaderboard-block" style="display: none;">
+            <div class="title">Leaderboard (<span id="player-count">0</span> players)</div>
+            <div id="lb-top">
+               <div class="lb-item">
+                  <!-- rank, player name, score -->
+               </div>
+               <div id="lb-player-line" style="display: block;">
+                  <div class="separator"></div>
+                  <div class="lb-item is-self"><span id="lb-player-rank">rank</span>. <span id="lb-player-name" class="player-name">Player</span><span class="points" id="lb-player-points">0</span></div>
+               </div>
+            </div>
+         </div>
+         <div id="player-health-background" style="display: none"">
+            <div id="player-health"></div>
+         </div>
+      </div>
+      <script src="/index.js"></script>
+      <script src="/classes/explosion.js"></script>
+   </body>
+</html>
