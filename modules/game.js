@@ -55,7 +55,7 @@ class Game extends EventEmitter {
 
     // Coin generation interval
     this.intervals.coins = setInterval(() => {
-      //this.generateCoins();
+      this.generateCoins();
     }, 13e3);
 
     this.generateBricks();
@@ -212,7 +212,7 @@ class Game extends EventEmitter {
 
   initializeCollisionChecking(){
     this.world.on("beginContact", function(evt) {
-      console.log("Collision detected");
+      //console.log("Collision detected");
 
       // Destructure to get bodies involved in the collision
       const { bodyA, bodyB } = evt;
