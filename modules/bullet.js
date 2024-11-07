@@ -17,7 +17,7 @@ class Bullet {
     this.damage = (damage * 10) + 75;
     // p2.js
     this.shape = new p2.Circle({ radius: (this.hitbox[0]/2) });
-    this.body = new p2.Body({ mass: 1, position: [this.x, this.y]});
+    this.body = new p2.Body({ mass: 1, position: [this.x, this.y], collisionResponse : true});
     this.shape.collisionGroup = BULLET; // this is a bullet group
     this.shape.collisionMask = PLAYER | BRICK | COIN // | BOMB | COLLIDE_ALL;
     this.body.addShape(this.shape);

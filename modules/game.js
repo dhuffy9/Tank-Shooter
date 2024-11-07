@@ -16,6 +16,7 @@ const EventEmitter = require("events"),
   brickResolver = require("./resolvers/brick"),
   bombResolver = require("./resolvers/bomb"),
   { WALL_PADDING, WALL_THICKNESS, PLAYER, BALL, GOAL, HEIGHT, WIDTH } = require("./consts");
+const bullet = require("./coin");
 
 class Game extends EventEmitter {
   constructor(id) {
@@ -35,6 +36,8 @@ class Game extends EventEmitter {
     this.initializeGameLoop()
     console.log('Game created');
 
+    console.log(this.world.solver.iterations + " Iterations: Tolerance " + this.world.solver.tolerance)
+
   }
 
   initializeGameLoop() {
@@ -52,10 +55,11 @@ class Game extends EventEmitter {
 
     // Coin generation interval
     this.intervals.coins = setInterval(() => {
-      this.generateCoins();
+      //this.generateCoins();
     }, 13e3);
 
     this.generateBricks();
+    console.log(this.world.bodies.length);
   }
 
   updateGameState(){
@@ -129,6 +133,7 @@ class Game extends EventEmitter {
   generateBricks() {
     // creates 24 x 4 bricks (96 total)
     for (var i = 0; i < 24; i++) {
+      let spaceInBetween = .5
       let x = Math.floor(Math.random() * 2950);
       let y = Math.floor(Math.random() * 2450);
       const isTooClose = (x, y) => {
@@ -164,22 +169,22 @@ class Game extends EventEmitter {
         // moving blocks
         switch (direction) {
           case 0: { // right
-            x += 50;
+            x += 50 + spaceInBetween;
             break;
           }
           case 1: {
             // down
-            y += 50;
+            y += 50 + spaceInBetween;
             break;
           }
           case 2: {
             // left
-            x -= 50;
+            x -= 50 + spaceInBetween;
             break;
           }
           case 3: {
             // up
-            y -= 50;
+            y -= 50 + spaceInBetween;
           }
         }
         if (x > 2950) {
@@ -206,8 +211,8 @@ class Game extends EventEmitter {
   }
 
   initializeCollisionChecking(){
-    this.world.on("impact", function(evt) {
-      //console.log("Collision detected");
+    this.world.on("beginContact", function(evt) {
+      console.log("Collision detected");
 
       // Destructure to get bodies involved in the collision
       const { bodyA, bodyB } = evt;
@@ -223,8 +228,8 @@ class Game extends EventEmitter {
       const isBulletB = bodyB.parent instanceof Bullet;
       const isCoinA = bodyA.parent instanceof Coin;
       const isCoinB = bodyB.parent instanceof Coin;
-      //const isBrickA = bodyA.parent instanceof Brick;
-      //const isBrickB = bodyB.parent instanceof Brick;
+      const isBrickA = bodyA.parent instanceof Brick;
+      const isBrickB = bodyB.parent instanceof Brick;
       //const isBombA = bodyA.parent instanceof Bomb;
       //const isBombB = bodyB.parent instanceof Bomb;
 
@@ -260,11 +265,12 @@ class Game extends EventEmitter {
         if (player && coin) {
           player.collision(coin); // Pass coin instance for handling
           this.coins.delete(coin); // Remove coin from game state
+          this.world.removeBody(coin.body);
         }
         return;
       }
 
-      /*
+
       // Player-Brick Collision
       if ((isPlayerA && isBrickB) || (isPlayerB && isBrickA)) {
         const player = getEntity(isPlayerA, isPlayerB, Player);
@@ -272,6 +278,7 @@ class Game extends EventEmitter {
         return;
       }
 
+      /*
       // Player-Bomb Collision
       if ((isPlayerA && isBombB) || (isPlayerB && isBombA)) {
         const player = getEntity(isPlayerA, isPlayerB, Player);

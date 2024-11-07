@@ -136,12 +136,13 @@ class Player {
           this.score += 1;
         break;
       case "Bullet":
-
           if(this.bullets.has(object)) break; // make sure that it is not the bullet of the same player
 
           this.health -= object.damage;
           this.removeBullet(object)
           break;
+      case "Brick":
+          console.log("player is touching brick")
     }
   }
 
