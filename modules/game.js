@@ -58,7 +58,7 @@ class Game extends EventEmitter {
       this.generateCoins();
     }, 13e3);
 
-    this.generateBricks();
+    //this.generateBricks();
     console.log(this.world.bodies.length);
   }
 
@@ -201,6 +201,7 @@ class Game extends EventEmitter {
         }
       }
     }
+    console.log(this.bricks.keys())
   }
 
   removeBullet(bullet) {
@@ -313,10 +314,10 @@ class Game extends EventEmitter {
 
 
   addToWorld(thing, type) {
-    if (type == "object") {
+    if (type === "object") {
       this.world.addBody(thing.body);
     }
-    if (type == "material") {
+    if (type === "material") {
       this.world.addContactMaterial(thing);
     }
   }

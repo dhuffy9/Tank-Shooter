@@ -246,6 +246,31 @@ function drawPlayer() {
     ctx.drawImage(shooterImg, -fixedWidth / 2, -fixedHeight / 2, fixedWidth, fixedHeight);
 
     ctx.restore(); // Restore the context for the next iteration
+
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "center";
+    ctx.fillText(player.name, x, y - 45);
+    ctx.textAlign = "start";
+
+    if (!player.bulletLoaded) {
+      const x1 = x - 23,
+          y1 = y + 45,
+          width = 45,
+          height = 5,
+          duration = 3000 - (player.stats[3] * 200),
+          color = "#29e81c",
+          percent = (player.now - player.bulletLoadTime) / duration,
+          fill = percent * width * 2;
+
+      if (percent <= 1) {
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#000000";
+        ctx.strokeRect(x1, y1, width, height);
+        ctx.fillStyle = color;
+        ctx.fillRect(x1, y1, fill, height);
+      }
+    }
   }
 }
 
