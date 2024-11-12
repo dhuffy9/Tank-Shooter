@@ -34,7 +34,7 @@ const enterButton = d.getElementById("enterGame"),
   playerHealth = d.getElementById("player-health"),
   lbPlayerline = d.getElementById("lb-player-line"),
   skinColorItems = d.getElementsByClassName("skinColorItem");
-var playerColor = null || "red";
+let playerColor = "red";
 
 enterButton.onclick = function() {
   JoinGame("global");
@@ -78,7 +78,6 @@ function JoinGame(game) {
 }
 
 function reset() {
-  oldPlayer = null;
   mainMenu.style.display = "";
   d.getElementById("code").innerHTML = "";
   const bar = document.querySelectorAll(".full");
@@ -301,7 +300,7 @@ function drawBullet() {
       continue;
     }
 
-    ctx.drawImage(img.bullet, x, y, bullet.hitbox[0], bullet.hitbox[1]);
+    ctx.drawImage(img.bullet, x, y, bullet.hitbox[0], bullet.hitbox[1]); // dont need to remove the size of the bullet to the x, y bc its already done in server
   }
 }
 

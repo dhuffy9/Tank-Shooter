@@ -27,15 +27,15 @@ io.sockets.on('connection', function(socket) {
   console.log('new socket : ' + socket.id);
   // The player has to press which game to join before getting in a game
   
-  socket.on("JoinGame", (g, n, c) => {
+  socket.on("JoinGame", (typeOfGame, userName, tankColor) => {
     console.log(Object.keys(GAME_LIST));
-    let oldName = "" + Math.random();
-    let name = n || oldName.slice(2, 7);
-    let color = c;
+    let randomName = ("" + Math.random()).slice(2, 7);
+    let name = userName || randomName ;
+    let color = tankColor;
     let game;
-    if (g === "global") {
+    if (typeOfGame === "global") {
       game = currentGame;
-    } else if (g === "create") {
+    } else if (typeOfGame === "create") {
       // create a game
       let id = Array.from({ length: 4 }, (a, b) => { var c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); return c[Math.floor(Math.random() * c.length)]; }).join("");
       game = new Game(id);
