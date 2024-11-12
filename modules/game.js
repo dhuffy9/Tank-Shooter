@@ -34,9 +34,6 @@ class Game extends EventEmitter {
     this.intervals = {};
     this.initializeGameLoop()
     console.log('Game created');
-
-    console.log(this.world.solver.iterations + " Iterations: Tolerance " + this.world.solver.tolerance)
-
   }
 
   initializeGameLoop() {
@@ -200,7 +197,6 @@ class Game extends EventEmitter {
         }
       }
     }
-    console.log(this.bricks.keys())
   }
 
   removeBullet(bullet) {

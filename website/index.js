@@ -340,7 +340,7 @@ function drawBrick() {
   for (let i = 0; i < brick.length; i++) {
     const x = brick[i].x - player.x + canvas.width / 2;
     const y = brick[i].y - player.y + canvas.height / 2;
-    ctx.drawImage(img.brick, x, y, brick[i].hitbox[0], brick[i].hitbox[1]);
+    ctx.drawImage(img.brick, x - brick[i].hitbox[0] / 2, y - brick[i].hitbox[1] / 2, brick[i].hitbox[0], brick[i].hitbox[1]);
   }
 }
 var explosionArray = [];
