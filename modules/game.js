@@ -32,7 +32,6 @@ class Game extends EventEmitter {
     this.bricks = new Set();
     this.walls = new Set();
     this.intervals = {};
-    //this.initialize();
     this.initializeGameLoop()
     console.log('Game created');
 
@@ -58,8 +57,8 @@ class Game extends EventEmitter {
       this.generateCoins();
     }, 13e3);
 
-    //this.generateBricks();
-    console.log(this.world.bodies.length);
+    this.generateBricks();
+
   }
 
   updateGameState(){

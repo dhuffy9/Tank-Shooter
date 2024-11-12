@@ -4,11 +4,14 @@ const serv = require('http').Server(app);
 const Game = require("./modules/game.js");
 const Player = require("./modules/player.js");
 
+
 app.use(express.static(__dirname + '/website'));
 
-serv.listen(process.env.PORT || 3000);
+const port = process.env.PORT || 3000;
 
-console.log("Server started");
+serv.listen(port);
+
+console.log("Server started at port " + port);
 
 
 var GAME_LIST = {};// 

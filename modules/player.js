@@ -58,7 +58,7 @@ class Player {
     this.shape = new p2.Box({ width: this.hitbox[0], height: this.hitbox[1] });
     this.body = new p2.Body({ mass: 60, position: [this.x, this.y], collisionResponse :true, damping: this.fricion, angularDamping: this.fricion});
     this.shape.collisionGroup = PLAYER; // this is a player group
-    this.shape.collisionMask = COIN | PLAYER | BULLET //PLAYER | BULLET | BRICK | COIN | BOMB | COLLIDE_ALL; // this can collide with player group
+    this.shape.collisionMask = COIN | PLAYER | BULLET | BRICK //PLAYER | BULLET | BRICK | COIN | BOMB | COLLIDE_ALL; // this can collide with player group
     this.body.addShape(this.shape);
     this.material = new p2.Material();
     this.shape.material = this.material;
