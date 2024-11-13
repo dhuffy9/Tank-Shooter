@@ -230,9 +230,20 @@ function drawPlayer() {
     if (x > canvas.width + player.hitbox[0] || y > canvas.height + player.hitbox[1] || x < -player.hitbox[1] || y < -player.hitbox[1]) {
       continue;
     }
+    //let roundedSpdy = parseFloat(player.spdy.toFixed(1));
+    //let roundedSpdx = parseFloat(player.spdx.toFixed(1));
 
-    // Draw tank image at calculated position, centered on the player
-    ctx.drawImage(tankImg, x - player.hitbox[0] / 2, y - player.hitbox[1] / 2, player.hitbox[0], player.hitbox[1]);
+    //let angle = (Math.atan2(roundedSpdy, roundedSpdx) * 180 / Math.PI) + 90;
+    //if (Math.abs(roundedSpdy) + Math.abs(roundedSpdx) === 0){
+      //angle = player.angle;
+    //}
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(player.angle * Math.PI / 180);
+    ctx.drawImage(tankImg,- player.hitbox[0] / 2,- player.hitbox[1] / 2, player.hitbox[0], player.hitbox[1]);
+
+    ctx.restore();
 
     // Save the context before rotating
     ctx.save();
@@ -275,13 +286,9 @@ function drawPlayer() {
 
 function background() {
   const player = getPlayer(),
-    width = 3000,
-    height = 2500,
     x = canvas.width / 2 - player.x,
     y = canvas.height / 2 - player.y;
 
-  // in this case, I have set the player's "width" and "height" to custom numbers in modules/player.js
-  //ctx.drawImage(img.background, x, y, width, height);
   const  background = d.getElementById("gameCanvas")
   background.style.backgroundPosition = `${x}px ${y}px`;
 
@@ -439,16 +446,10 @@ function drawExplosion() {
   }
 }
 
+
 function animate() { //lerp(min,max,fract)
-  /*
-  if (oldPlayer) { // smoothly move the camera around
-    oldPlayer.x = lerp(oldPlayer.x, getOriginalPlayer().x, 0.03);
-    oldPlayer.y = lerp(oldPlayer.y, getOriginalPlayer().y, 0.03);
-  } else {
-    getOriginalPlayer();
-  }
-  */
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // This deletes the area the timer occupies,
+  //smoothly move the camera around
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears the canvas for redrawing
   background();
   drawCoins();
   drawBomb();

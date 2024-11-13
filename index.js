@@ -14,14 +14,14 @@ serv.listen(port);
 console.log("Server started at port " + port);
 
 
-var GAME_LIST = {};// 
+const GAME_LIST = {};//
 
 // creates a game and sets it as the first game
 let GameNum = 0,
   currentGame = new Game(GameNum);
 GAME_LIST[GameNum] = currentGame;
 
-var io = require('socket.io')(serv, {});
+const io = require('socket.io')(serv, {});
 
 io.sockets.on('connection', function(socket) {  
   console.log('new socket : ' + socket.id);

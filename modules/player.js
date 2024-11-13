@@ -96,6 +96,25 @@ class Player {
       //this.spdy = -(this.maxspd + this.stats[0] / 4);
       this.body.velocity[1] = -(this.maxspd + this.stats[0] / 3);
     }
+
+    if (this.pressingUp && this.pressingLeft) {
+      this.angle = -45;
+    } else if (this.pressingUp && this.pressingRight) {
+      this.angle = 45;
+    } else if (this.pressingDown && this.pressingLeft) {
+      this.angle = 225;
+    } else if (this.pressingDown && this.pressingRight) {
+      this.angle = 135;
+    } else if (this.pressingUp) {
+      this.angle = 0;
+    } else if (this.pressingDown) {
+      this.angle = 180;
+    } else if (this.pressingLeft) {
+      this.angle = -90;
+    } else if (this.pressingRight) {
+      this.angle = 90;
+    }
+
     this.accessories()
   }
 

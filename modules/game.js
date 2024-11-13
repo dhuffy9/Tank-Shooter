@@ -81,6 +81,19 @@ class Game extends EventEmitter {
 
     }
 
+    /*
+    for (let brick of this.bricks) {
+      if(brick.addedMaterial) return;
+
+      for (let bullet of this.bullets) {
+        this.bouceOjbects(brick.material, bullet.material);
+        brick.addedMaterial = true;
+        bullet.addedMaterial = true;
+      }
+    }
+    */
+
+
     this.updateBullets(bulletsPack);
     this.updateCoins(coinsPack);
     this.updateBricks(bricksPack);
@@ -281,7 +294,7 @@ class Game extends EventEmitter {
         player.collision("bomb");
         return;
       }
-
+      */
       // Bullet-Brick Collision
       if ((isBulletA && isBrickB) || (isBulletB && isBrickA)) {
         const bullet = getEntity(isBulletA, isBulletB, Bullet);
@@ -289,7 +302,6 @@ class Game extends EventEmitter {
         console.log(`Collision between bullet ${bullet.id} and brick ${brick.id}`);
         return;
       }
-      */
 
     }.bind(this)); // Bind `this` to access `this.coins` in the callback
   }
@@ -318,7 +330,7 @@ class Game extends EventEmitter {
   }
 
   bouceOjbects(object1, object2) {
-    console.log("bouceOjbects")
+    //console.log("bouceOjbects")
     var objectVsObject = new p2.ContactMaterial(object1, object2, {
       friction: 1,
       restitution: 1.5
@@ -416,22 +428,22 @@ class Game extends EventEmitter {
       switch (inputId) {
         case "right": {
           player.pressingRight = state;
-          player.angle = angle;
+          //player.angle = angle;
           break;
         }
         case "left": {
           player.pressingLeft = state;
-          player.angle = angle;
+          //player.angle = angle;
           break;
         }
         case "down": {
           player.pressingDown = state;
-          player.angle = angle;
+          //player.angle = angle;
           break;
         }
         case "up": {
           player.pressingUp = state;
-          player.angle = angle;
+          //player.angle = angle;
           break;
         }
         case "attack": {

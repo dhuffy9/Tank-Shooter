@@ -7,7 +7,10 @@
     <list default="true" id="961e41a9-139b-49e0-ac0c-8e947f39cd57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/brick.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/brick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/bullet.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/bullet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,21 +62,38 @@
       <workItem from="1730872751091" duration="14940000" />
       <workItem from="1731387710020" duration="1842000" />
       <workItem from="1731449011709" duration="473000" />
-      <workItem from="1731449515735" duration="4550000" />
+      <workItem from="1731449515735" duration="17798000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/website/index.js</url>
-          <line>71</line>
+          <url>file://$PROJECT_DIR$/modules/player.js</url>
+          <line>91</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

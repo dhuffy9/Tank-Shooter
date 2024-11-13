@@ -21,10 +21,14 @@ class Bullet {
     this.shape.collisionGroup = BULLET; // this is a bullet group
     this.shape.collisionMask = PLAYER | BRICK | COIN // | BOMB | COLLIDE_ALL;
     this.body.addShape(this.shape);
+    this.material = new p2.Material();
+    this.shape.material = this.material;
+    this.addedMaterial = false;
     this.body.parent = this;
 
     this.originalX = this.body.position[0];
     this.originalY = this.body.position[1];
+
 
     //console.log(this.type +" position :" + this.body.position);
   }
